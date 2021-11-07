@@ -7,7 +7,9 @@ import (
 func main() {
 
 	size := 5
-	total := [5]int{2, 3, 1, 5, 4}
+	//total := []int{0, 0, 0, 0, 0}
+	//total := [5]int{2, 3, 1, 5, 4}
+	total := [5]int{2, 3, 2, 5, 4}
 	//total := []int{0, 0, 0, 0, 0},	//total := []int{2, 3, 2, 5, 4},	//total := []int{3, 3, 1, 5, 4}
 	index := 0
 	y := 1
