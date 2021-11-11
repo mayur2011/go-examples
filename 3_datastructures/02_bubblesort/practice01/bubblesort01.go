@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 
 	x := []int{67, 32, 43, 21, 02, 55}
+	fmt.Printf("Before Sorting:%d\n", x)
 	size := len(x)
 	m := size - 1
 
@@ -22,5 +23,5 @@ func main() {
 		}
 		m--
 	}
-	fmt.Println(x)
+	fmt.Printf("After  sorting: %d", x)
 }
