@@ -11,29 +11,16 @@ func main() {
 	for m >= 0 {
 		e := 0
 		f := e + 1
-		for f < m {
-			fmt.Printf("%d %d\n", e, f)
+		for f <= m {
+			if x[f] < x[e] {
+				g := x[e]
+				x[e] = x[f]
+				x[f] = g
+			}
 			e++
 			f++
 		}
 		m--
 	}
+	fmt.Println(x)
 }
-
-/*
-0 1
-1 2
-2 3
-3 4
-4 5
-0 1
-1 2
-2 3
-3 4
-0 1
-1 2
-2 3
-0 1
-1 2
-0 1
-*/
