@@ -23,5 +23,5 @@ func main() {
 		}
 		m--
 	}
-	fmt.Printf("After  sorting: %d", x)
+	fmt.Printf("After  Sorting: %d", x)
 }
