@@ -23,5 +23,10 @@ func main() {
 		}
 		m--
 	}
-	fmt.Printf("After  Sorting: %d", x)
+	//fmt.Printf("After  Sorting: %d", x)
+	y := 0
+	for y < size {
+		fmt.Printf("%d ", x[y])
+		y++
+	}
 }
