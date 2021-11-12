@@ -14,7 +14,11 @@ func main() {
 	client := http.Client{}
 
 	request, err := http.NewRequest(httpMethod, url, nil)
-	request.Header.Set("Accept", "application/xml")
+	//request.Header.Set("Accept", "application/xml")
+	request.Header.Set("Accept", "application/json")
+	if err != nil {
+		panic(err)
+	}
 
 	response, err := client.Do(request)
 	if err != nil {
