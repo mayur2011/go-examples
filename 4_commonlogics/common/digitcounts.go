@@ -1,8 +1,11 @@
 package common
 
-import "fmt"
+func GetDigitCount(num int) int {
 
-func GetDigitCount(x []int) int {
-	fmt.Printf("%d", x)
-	return 1
+	dc := 1
+	for num > 9 {
+		num = num / 10
+		dc++
+	}
+	return dc
 }
