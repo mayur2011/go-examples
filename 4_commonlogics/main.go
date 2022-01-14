@@ -6,12 +6,12 @@ import (
 )
 
 func main() {
-	data := []int{45, 654, 769, 1200, 110}
+	data := []int{45, 654, 769, 1200, 110, 99}
 	fmt.Println(data)
-	queue := [10][4]int{}
+	queue := [10][10]int{}
 	rear := [10]int{}
-	//front := [10]int{}
-	//x := [10]int{}
+	front := [10]int{}
+	x := [10]int{}
 	e := 1
 	f := 10
 
@@ -31,13 +31,24 @@ func main() {
 			rear[num]++
 			i++
 		}
+		fmt.Println(queue)
 
 		//logic to collect back the data to an array
-
-		// i := 0
-		// for i < len(data)
-
-		fmt.Println(queue)
+		i = 0
+		j := 0
+		for i <= 9 {
+			for rear[i] != 0 {
+				x[j] = queue[i][front[i]]
+				front[i]++
+				j++
+				if front[i] == rear[i] {
+					front[i] = 0
+					rear[i] = 0
+				}
+			}
+			i++
+		}
+		fmt.Println(x)
 		e = e * 10
 		f = f * 10
 		y++
