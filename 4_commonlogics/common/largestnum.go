@@ -1,13 +1,9 @@
 package common
 
-import (
-	"fmt"
-)
-
 func GetLargestNum(x []int) (int, int) {
-	fmt.Printf("%v \n", x)
+	//fmt.Printf("%v \n", x)
 	length := len(x)
-	fmt.Printf("%d", length)
+	//fmt.Printf("%d", length)
 
 	largest := x[0]
 	index := 0
