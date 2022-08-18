@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func trappedWater(height []int) int{
+func trap(height []int) int{
 	n := len(height)-1
 	maxLeft := height[0] //initializing max left as first index
 	maxRight := height[n] //initializing max right as last index
@@ -36,7 +36,7 @@ func trappedWater(height []int) int{
 
 func main() {
 
-	arr := []int{4,2,0,6,2,3,5}
-	totalWaterTrapped := trappedWater(arr)
-	fmt.Printf("Trapper Water: %d\n", totalWaterTrapped)
+	arr := []int{9,2,0,3,2,6}
+	totalWaterTrapped := trap(arr)
+	fmt.Printf("Trapped Water: %d\n", totalWaterTrapped)
 }
