@@ -1,9 +1,11 @@
+//GO implementation for Trapping rain water optimized solution
 package main
 
 import (
 	"fmt"
 )
 
+//trap function to receive heights and calculate tolta trapped water
 func trap(height []int) int{
 	n := len(height)-1
 	maxLeft := height[0] //initializing max left as first index
@@ -35,8 +37,9 @@ func trap(height []int) int{
 
 
 func main() {
-
 	arr := []int{9,2,0,3,2,6}
 	totalWaterTrapped := trap(arr)
 	fmt.Printf("Trapped Water: %d\n", totalWaterTrapped)
 }
+
+//This code is contributed by Mayur Upadhyay
