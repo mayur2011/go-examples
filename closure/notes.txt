@@ -1,0 +1,3 @@
+references--
+https://gobyexample.com/closures
+https://betterprogramming.pub/closures-made-simple-with-golang-69db3017cd7b
