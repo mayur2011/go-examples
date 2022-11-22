@@ -49,7 +49,7 @@ func main() {
 		log.Info("PRINTING i = ", i)
 		if i%5 == 0 {
 			log.Info("GOING TO SLEEP For 1 Sec")
-			time.Sleep(time.Second)
+			//time.Sleep(time.Second)
 		}
 	}
 }
