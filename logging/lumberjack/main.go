@@ -1,6 +1,8 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"io"
 	"os"
 	"path/filepath"
@@ -10,15 +12,20 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
-func SetupLogger() {
-
+func initLogger(logDir *string) {
+	fPath := ""
+	if *logDir != "" {
+		fmt.Println("IF IF IF")
+		fPath = fmt.Sprintf("%vaccess.log", *logDir)
+	} else {
+		wd, _ := os.Getwd()
+		fPath = wd + "-access.log"
+	}
 	lumberjackLogger := &lumberjack.Logger{
-		// Log file abbsolute path, os agnostic
-		Filename:   filepath.ToSlash("/path/to/log/file"),
-		MaxSize:    5, // MB
+		Filename:   filepath.ToSlash(fPath),
+		MaxSize:    1, // MB
 		MaxBackups: 10,
-		MaxAge:     10,   // days
-		Compress:   true, // disabled by default
+		MaxAge:     10, // days
 	}
 
 	// Fork writing into two outputs
@@ -34,5 +41,15 @@ func SetupLogger() {
 }
 
 func main() {
-	SetupLogger()
+	logDir := flag.String("logdir", "", "logging directory")
+	flag.Parse()
+	initLogger(logDir)
+	for i := 0; i <= 1000; i++ {
+		fmt.Println("i =", i)
+		log.Info("PRINTING i = ", i)
+		if i%5 == 0 {
+			log.Info("GOING TO SLEEP For 1 Sec")
+			time.Sleep(time.Second)
+		}
+	}
 }
