@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"net"
 	"time"
@@ -9,8 +8,6 @@ import (
 
 type Backend struct {
 	net.Conn
-	Reader *bufio.Reader
-	Writer *bufio.Writer
 }
 
 var backendQueue chan *Backend
@@ -59,9 +56,7 @@ func getBackend() (*Backend, error) {
 			return nil, err
 		}
 		return &Backend{
-			Conn:   be,
-			Reader: bufio.NewReader(be),
-			Writer: bufio.NewWriter(be),
+			Conn: be,
 		}, nil
 	}
 }
