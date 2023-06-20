@@ -44,7 +44,7 @@ func (m MapStore) GetRecordByID(id string) (domain.User, error) {
 	return domain.User{}, nil
 }
 
-func (m MapStore) GetAllRecords() ([]domain.User, error) {
+func (m MapStore) GetAll() ([]domain.User, error) {
 	var docs []domain.User
 	for k := range m.store {
 		docs = append(docs, m.store[k])
