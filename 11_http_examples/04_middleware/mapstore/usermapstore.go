@@ -20,12 +20,12 @@ func (m MapStore) isRecordExist(id string) bool {
 	return ok
 }
 
-func (m MapStore) Create(doc domain.User) (string, error) {
+func (m MapStore) Create(doc domain.User) error {
 	if m.isRecordExist(doc.ID) {
-		return doc.ID, fmt.Errorf("user already exists")
+		return fmt.Errorf("user already exists")
 	}
 	m.store[doc.ID] = doc
-	return doc.ID, nil
+	return nil
 }
 
 func (m MapStore) Update(id string, doc domain.User) error {
