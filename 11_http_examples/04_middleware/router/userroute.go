@@ -8,10 +8,11 @@ import (
 )
 
 func SetUserRoutes(router *mux.Router) *mux.Router {
-
 	mapStore := mapstore.NewUserMapStore()
 	userController := controller.UserController{Store: mapStore}
-	router.Handle("/createUser", controller.ResponseHandler(userController.PostUser)).Methods("POST")
+	router.Handle("/create", controller.ResponseHandler(userController.PostUser)).Methods("POST")
+	router.Handle("/getAll", controller.ResponseHandler(userController.GetUsers)).Methods("GET")
+	router.Handle("/delete/{id}", controller.ResponseHandler(userController.DeleteUser)).Methods("DELETE")
 	return router
 }
 
