@@ -36,7 +36,7 @@ func (m MapStore) Update(id string, doc domain.User) error {
 	return fmt.Errorf("user does not exist for ID: %s", id)
 }
 
-func (m MapStore) getRecordByID(id string) (domain.User, error) {
+func (m MapStore) GetRecordByID(id string) (domain.User, error) {
 	if m.isRecordExist(id) {
 		doc := m.store[id]
 		return doc, nil
@@ -44,10 +44,18 @@ func (m MapStore) getRecordByID(id string) (domain.User, error) {
 	return domain.User{}, nil
 }
 
-func (m MapStore) getAllRecords() ([]domain.User, error) {
+func (m MapStore) GetAllRecords() ([]domain.User, error) {
 	var docs []domain.User
 	for k := range m.store {
 		docs = append(docs, m.store[k])
 	}
 	return docs, nil
+}
+
+func (m MapStore) Delete(id string) error {
+	if m.isRecordExist(id) {
+		delete(m.store, id)
+		return nil
+	}
+	return fmt.Errorf("user does not exist for ID: %s", id)
 }
