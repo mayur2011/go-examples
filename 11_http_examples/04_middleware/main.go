@@ -11,4 +11,5 @@ func main() {
 	log.Printf("Starting the http server on port: %s", port)
 	router := router.InitRoutes()
 	http.ListenAndServe(port, router)
+
 }

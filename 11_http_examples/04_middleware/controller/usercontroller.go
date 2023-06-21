@@ -31,7 +31,7 @@ func (uc UserController) PostUser(w http.ResponseWriter, r *http.Request) (inter
 	if err := uc.Store.Create(user); err != nil {
 		return domain.User{}, http.StatusNotFound, err
 	}
-	return user, 0, nil
+	return user, http.StatusOK, nil
 }
 
 // Delete user will delete given user
