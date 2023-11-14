@@ -7,17 +7,36 @@ import (
 
 var p = fmt.Printf
 
-func countTriplets(arr []int, s int) int {
-	return 0
+func countTriplets(na []int, total int) bool {
+	sort.Ints(na)
+
+	for i:=0;i<len(na)-2;i++{
+	  l, r := i+1, len(na)-1
+
+	  for l < r {
+	    curSum := na[i]+na[l]+na[r]
+	    
+	    if curSum == total {
+		return true
+	    }else if curSum < total{
+		l++
+	    }else {
+		r--
+	    }	    
+	  }
+	}
+	return false
 }
 
 func main() {
-	arr := []int{7, 2, 5, 4, 1, 3}
-	size := len(arr)
+	nums := []int{-3, 1, 2, 4, 5, 7, 8}
+	target := 10
+
+	size := len(nums)
 	p("size: %d\n", len(arr))
-	//p("size: %d", cap(arr))
+
 	sort.Ints(arr)
 	p("%d", arr)
-	c := countTriplets(arr, size)
+	c := countTriplets(arr, target)
 	p("%v", c)
 }
