@@ -10,24 +10,34 @@ type Node struct {
 var start *Node
 
 func (n *Node) add(value int) error {
+	
+	node:= &Node{data:value}
 
 	if start == nil {
-		n.data=value
-		start = n
+		start = node
 
+	}else{
+		curNode := start
+		for (curNode.next != nil){
+			curNode = curNode.next
+		}
+		curNode.next = node
 	}
-	fmt.Printf("add..done\nstart is %+v and now next is %+v\n",start,n.next)
 	return nil
 }
 
-func main(){
-	
-	if start == nil {
-		fmt.Printf("start-->%+v\n",start)
-		n := Node{}
-		n.add(1)
-	}else{
-		fmt.Printf("start-->%+v\n","not-nil")
+func (n *Node) traverse() {
+	curNode := start
+	for curNode != nil{
+		fmt.Printf("[%d, %p]\n",curNode.data,curNode.next)
+		curNode = curNode.next
 	}
+}
 
+func main(){
+		n:= &Node{}
+		n.add(1)
+		n.add(2)
+		n.add(3)
+		n.traverse()
 }
