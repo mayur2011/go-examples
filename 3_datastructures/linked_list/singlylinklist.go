@@ -9,8 +9,25 @@ type Node struct {
 
 var start *Node
 
-func main(){
+func (n *Node) add(value int) error {
 
-	fmt.Printf("start-->%+v\n",start)
+	if start == nil {
+		n.data=value
+		start = n
+
+	}
+	fmt.Printf("add..done\nstart is %+v and now next is %+v\n",start,n.next)
+	return nil
+}
+
+func main(){
+	
+	if start == nil {
+		fmt.Printf("start-->%+v\n",start)
+		n := Node{}
+		n.add(1)
+	}else{
+		fmt.Printf("start-->%+v\n","not-nil")
+	}
 
 }
