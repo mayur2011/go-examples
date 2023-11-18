@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
         "os"
+	"strconv"
 )
 
 type Node struct {
@@ -57,16 +58,27 @@ func (n *Node) traverse() {
 	}
 }
 
-func (n *Node) getLastNode() *Node{
-	curNode:= start
-	for curNode != nil{
-		if curNode.next == nil {
-			return curNode.next
+func (n *Node) removeNodeFromEnd(num int) {
+
+	//get the length of linked list using l varibale
+	//position of node to remove.. from the start
+
+	if num > l {
+		fmt.Println("Invalid")
+	}else if l == num {
+	  start = start.next
+	}else {
+		pos := (l-num)+1
+		prev := new(Node)
+		curNode := start
+		for i:=1; i<=pos; i++ {
+			if i == pos {
+				prev.next = curNode.next
+			}
+			prev = curNode
+			curNode = curNode.next
 		}
-		curNode=curNode.next
 	}
-	
-	return curNode
 }
 
 func main(){
@@ -75,14 +87,22 @@ func main(){
 			os.Exit(0)
 		}
 		
-		n := &Node{}
+		nthNode := os.Args[1]
+		fmt.Println("nth node=",nthNode)
 
-		for i:=1; i<len(os.Args); i++ {
-			a:= os.Args[i]
-			fmt.Printf("adding data i= %v\n",a)
-			n.add(a)
+		n:= &Node{}
+		s:=[]int{23,28,10,5,67,39,70}
+		for i:=0; i<len(s); i++ {
+			a:= s[i]
+			fmt.Printf("adding data a= %v\n",a)
+			n.add(strconv.Itoa(a))
 		}
 		n.traverse()
-		ln := n.getLengthOfList()
-		fmt.Println("lenght:",ln)
+		l = n.getLengthOfList()
+		fmt.Println("lenght:",l)
+		num, _ := strconv.Atoi(nthNode)
+		if num >= 1{
+			n.removeNodeFromEnd(num)
+		}
+		n.traverse()
 }
